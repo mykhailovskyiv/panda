@@ -1,18 +1,19 @@
 <template>
   <div class="select-city">
     <input
-        v-model="city"
+        v-model="searchCity"
         @input="findCity"
         class="select-city__input"
+        placeholder="Enter city name"
     >
     <ul class="select-city__list">
       <li
-          v-for="item in filteredCities.slice(0, 3)"
+          v-for="item in filteredCity.slice(0, 3)"
           :key="item.index"
           @click="setCity(item.city)"
           class="select-city__item"
       >
-        {{item.city}}
+        {{ item.city }}
       </li>
     </ul>
   </div>
@@ -20,37 +21,48 @@
 
 <script>
 
+import {mapActions, mapGetters} from "vuex";
+
 export default {
   name: "CitySelect",
   data() {
     return {
-      city: '',
-      filteredCities: [],
+      searchCity: '',
+      filteredCity: [],
+    }
+  },
+  props: {
+    cities: {
+      type: Array,
+      required: true
     }
   },
   methods: {
+    ...mapActions([
+      'SET_CITY',
+      'SET_CITY_WEATHER',
+      'GET_WEATHER'
+    ]),
     findCity() {
-      if (this.city.length !==0) {
-        this.filteredCities = this.cities.filter(item => {
-          return item.city.toLowerCase().startsWith(this.city.toLowerCase())
+      if (this.searchCity.length !==0) {
+        this.filteredCity = this.cities.filter(item => {
+          return item.city.toLowerCase().startsWith(this.searchCity.toLowerCase())
         })
       } else {
-        this.filteredCities =[]
+        this.filteredCity =[]
       }
-      this.$emit('filtered-cities',this.filteredCities)
     },
     setCity(city) {
-      this.city = city
-      this.getWeather()
-      this.filteredCities =[]
+      this.SET_CITY(city)
+      this.searchCity = this.CITY
+      this.GET_WEATHER(city)
+      this.filteredCity =[]
     },
-    getWeather() {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=a037c87fc70dc90f55aeda70b13e314c`)
-          .then(resp => resp.json())
-          .then( resp => {
-            this.$emit('city-weather', resp)
-          })
-    }
+  },
+  computed: {
+    ...mapGetters([
+      'CITY',
+    ])
   }
 }
 </script>
@@ -66,11 +78,28 @@ export default {
   position: relative;
   &__list {
     position: absolute;
-    top: 10px;
+    top: 15px;
     list-style: none;
     display: flex;
     flex-direction: column;
     padding: 0;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+  }
+  &__item {
+    padding-top: 5px;
+    border-radius: 15px;
+    transition-duration: .5s;
+  }
+  &__item:hover {
+    background: rgba(218, 183, 255, 0.34);
+    transition-duration: .5s;
+  }
+  &__input {
+    padding: 5px 5px 5px 10px;
+    border-radius: 15px;
+    border: none;
   }
 }
 </style>

@@ -23,6 +23,17 @@ const store = createStore({
         SET_CITY_WEATHER({commit}, data) {
             commit('UPDATE_CITY_WEATHER', data)
         },
+        GET_WEATHER({commit}, city) {
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a037c87fc70dc90f55aeda70b13e314c`)
+                .then(resp => resp.json())
+                .then((resp) => {
+                    console.log(resp)
+                    commit('UPDATE_CITY_WEATHER', resp)
+                })
+                .catch((error) =>{
+                    console.log(error)
+                })
+        }
 
     },
     getters: {

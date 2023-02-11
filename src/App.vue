@@ -22,11 +22,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 20px;
   box-sizing: border-box;
   padding: 0;
 }
-h1,h2,h3,h4,p,span {
+h1,h2,h3,h4,h5,p,span {
   margin: 0;
+  color: black;
+}
+body {
+margin: 0;
 }
 </style>
