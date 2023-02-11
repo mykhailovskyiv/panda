@@ -1,11 +1,11 @@
 <template>
  <div class="card" v-if="item">
    <div class="card__container">
-     <h5>{{ item.name }}</h5>
-     <p>Temp: {{ temperatureOnCelsius(item.main.temp) }}</p>
-     <p>Feels like {{ temperatureOnCelsius(item.main.feels_like) }}</p>
-     <p>{{ getItemWeather().main }}</p>
-     <p>{{ getItemWeather().description }}</p>
+     <h5 class="card__title">{{ item.name }}</h5>
+     <p class="card__description">Temp: {{ temperatureOnCelsius(item.main.temp) }}</p>
+     <p class="card__description">Feels like {{ temperatureOnCelsius(item.main.feels_like) }}</p>
+     <p class="card__description">{{ getItemWeather().main }}</p>
+     <p class="card__description">{{ getItemWeather().description }}</p>
    </div>
  </div>
 </template>
@@ -44,6 +44,13 @@ export default {
     background: white;
     border-radius: 30px;
     padding-bottom: 10px;
+  }
+  &__title {
+    padding: 15px 0;
+    font-size: 16px;
+  }
+  &__description {
+   padding-top: 5px;
   }
 }
 
