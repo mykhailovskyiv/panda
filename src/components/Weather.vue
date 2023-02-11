@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Logo></Logo>
-    <h1>Panda Weather</h1>
+    <h1>Panda Weather v1</h1>
     <div class="select-city">
       <input autocomplete="true" v-model="city" @input="findCity">
       <ul>
