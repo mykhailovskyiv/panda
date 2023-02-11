@@ -4,7 +4,7 @@
     <h1>Panda Weather</h1>
     <div class="select-city">
       <input
-          v-model="city"
+          v-model="searchCity"
           @input="findCity"
           class="select-city__input"
       >
@@ -20,7 +20,7 @@
       </ul>
     </div>
     <div class="card-list">
-      <city-card :item="cityWeather"></city-card>
+      <city-card :item="CITY_WEATHER"></city-card>
     </div>
   </div>
 </template>
@@ -29,15 +29,15 @@
 import Logo from "../assets/Logo"
 import cities from "../assets/ua.json"
 import CityCard from "@/components/CityCard";
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
   name: "Weather",
   data() {
     return {
-      city: '',
+      searchCity: this.CITY,
       cities: cities,
       filteredCity: [],
-      cityWeather: null
     }
   },
   components: {
@@ -45,28 +45,38 @@ export default {
     CityCard
   },
   methods: {
+    ...mapActions([
+      'SET_CITY',
+      'SET_CITY_WEATHER'
+    ]),
     findCity() {
-      if (this.city.length !==0) {
+      if (this.searchCity.length !==0) {
         this.filteredCity = this.cities.filter(item => {
-          return item.city.toLowerCase().startsWith(this.city.toLowerCase())
+          return item.city.toLowerCase().startsWith(this.searchCity.toLowerCase())
         })
       } else {
         this.filteredCity =[]
       }
     },
     setCity(city) {
-      this.city = city
+      this.SET_CITY(city)
+      this.searchCity = this.CITY
       this.getWeather()
       this.filteredCity =[]
     },
     getWeather() {
-      console.log(this.city)
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=a037c87fc70dc90f55aeda70b13e314c`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.CITY}&appid=a037c87fc70dc90f55aeda70b13e314c`)
       .then(resp => resp.json())
       .then( resp => {
-        this.cityWeather = resp
+        this.SET_CITY_WEATHER(resp)
       })
     }
+  },
+  computed: {
+    ...mapGetters([
+      'CITY',
+      'CITY_WEATHER'
+    ])
   }
 
 }
