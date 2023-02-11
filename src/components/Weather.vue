@@ -3,9 +3,20 @@
     <Logo></Logo>
     <h1>Panda Weather</h1>
     <div class="select-city">
-      <input autocomplete="true" v-model="city" @input="findCity">
-      <ul>
-        <li v-for="item in filteredCity" :key="item.index" @click="setCity(item.city)">{{item.city}}</li>
+      <input
+          v-model="city"
+          @input="findCity"
+          class="select-city__input"
+      >
+      <ul class="select-city__list">
+        <li
+            v-for="item in filteredCity.slice(0, 3)"
+            :key="item.index"
+            @click="setCity(item.city)"
+            class="select-city__item"
+        >
+          {{item.city}}
+        </li>
       </ul>
     </div>
     <div class="card-list">
@@ -61,6 +72,22 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .select-city {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+    margin: 0 auto;
+    position: relative;
+    &__list {
+      position: absolute;
+      top: 10px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+  }
 </style>

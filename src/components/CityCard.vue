@@ -26,6 +26,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.card {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 
 </style>
