@@ -8,25 +8,6 @@
 import Chart from 'chart.js/auto'
 export default {
   name: "Chart",
-  data() {
-    return {
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    }
-  },
   props: {
     item :{
       type: Object,
@@ -39,13 +20,31 @@ export default {
   methods: {
     getChart() {
       const ctx = document.getElementById('weather-chart');
-      new Chart(ctx, {type: 'bar', data: this.data})
+      const labels = this.item.list.map(item => item.dt_txt)
+      const values = this.item.list.map(item => this.temperatureOnCelsius(item.main.temp))
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Temp',
+            data: values,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
     },
-    updateChart() {
-      // const labels = this.item.list.map(item => item.dt_txt)
-      // const values = this.item.list.map(item => item.main.temp)
+    temperatureOnCelsius(value) {
+      return Math.ceil(value - 273.15)
     }
-  }
+  },
 }
 
 </script>
