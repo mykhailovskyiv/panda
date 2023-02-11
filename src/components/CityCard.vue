@@ -1,11 +1,11 @@
 <template>
  <div class="card" v-if="item">
    <div class="card__container">
-     <h5 class="card__title">{{ item.name }}</h5>
-     <p class="card__description">Temp: {{ temperatureOnCelsius(item.main.temp) }}</p>
-     <p class="card__description">Feels like {{ temperatureOnCelsius(item.main.feels_like) }}</p>
-     <p class="card__description">{{ getItemWeather().main }}</p>
-     <p class="card__description">{{ getItemWeather().description }}</p>
+     <h5 class="card__title">{{ item.city.name }}</h5>
+<!--     <p class="card__description">Temp: {{ temperatureOnCelsius(item.main.temp) }}</p>-->
+<!--     <p class="card__description">Feels like {{ temperatureOnCelsius(item.main.feels_like) }}</p>-->
+<!--     <p class="card__description">{{ getItemWeather().main }}</p>-->
+<!--     <p class="card__description">{{ getItemWeather().description }}</p>-->
    </div>
  </div>
 </template>
@@ -15,7 +15,8 @@ export default {
   name: "CityCard",
   props: {
     item :{
-      type: Object
+      type: Object,
+      required: true
     }
   },
   methods: {

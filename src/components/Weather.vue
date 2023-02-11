@@ -10,7 +10,10 @@
   </header>
   <div class="container">
     <div class="card-list">
-      <city-card :item="CITY_WEATHER"></city-card>
+      <city-card v-if="CITY_WEATHER" :item="CITY_WEATHER"></city-card>
+    </div>
+    <div class="chart" v-if="CITY_WEATHER">
+      <Chart :item="CITY_WEATHER"></Chart>
     </div>
   </div>
 </template>
@@ -20,6 +23,7 @@ import Logo from "../assets/Logo"
 import cities from "../assets/ua.json"
 import CityCard from "@/components/CityCard";
 import CitySelect from "@/components/CitySelect";
+import Chart from "@/components/Chart";
 import {mapGetters} from 'vuex'
 
 export default {
@@ -30,6 +34,7 @@ export default {
     }
   },
   components: {
+    Chart,
     CitySelect,
     Logo,
     CityCard
