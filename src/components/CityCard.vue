@@ -3,6 +3,7 @@
    <h5>{{ item.name }}</h5>
    <p>{{ getItemWeather().main }}</p>
    <p>{{ getItemWeather().description }}</p>
+   <p>{{ temperatureOnCelsius(item.main.temp) }}</p>
  </div>
 </template>
 
@@ -17,6 +18,9 @@ export default {
   methods: {
     getItemWeather() {
       return this.item.weather[0]
+    },
+    temperatureOnCelsius(value) {
+      return Math.ceil(value - 273.15)
     }
   }
 }
