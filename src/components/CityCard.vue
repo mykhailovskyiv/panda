@@ -6,11 +6,14 @@
      <p class="card__description">Feels like {{ temperatureOnCelsius(item.list[0].main.feels_like) }}</p>
      <p class="card__description">{{ getItemWeather().main }}</p>
      <p class="card__description">{{ getItemWeather().description }}</p>
+     <button @click="addToFavorite">Add to favorite</button>
    </div>
  </div>
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
   name: "CityCard",
   props: {
@@ -20,6 +23,12 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'ADD_TO_FAVORITE'
+    ]),
+    addToFavorite() {
+      this.ADD_TO_FAVORITE(this.item)
+    },
     getItemWeather() {
       return this.item.list[0].weather[0]
     },

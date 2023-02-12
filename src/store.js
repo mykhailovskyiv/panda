@@ -3,9 +3,10 @@ import { createStore } from 'vuex'
 const store = createStore({
     state () {
         return {
-            city:'',
+            city: '',
             cityWeather: null,
             filteredCities: [],
+            favoriteCities: []
         }
     },
     mutations: {
@@ -14,6 +15,26 @@ const store = createStore({
         },
         UPDATE_CITY_WEATHER: (state, data) => {
             state.cityWeather = data
+        },
+        SET_TO_FAVORITE:(state, data) => {
+            if (state.favoriteCities.length) {
+                let alreadyExist = false
+                state.favoriteCities.map(function (item){
+                    if (item.city.name === data.city.name) {
+                        alreadyExist = true
+
+                    }
+                })
+                if (!alreadyExist) {
+                    state.favoriteCities.push(data)
+                }
+            } else {
+                state.favoriteCities.push(data)
+            }
+
+        },
+        REMOVE_FROM_FAVORITE:(state, data) => {
+            state.favoriteCities.splice(data, 1)
         }
     },
     actions: {
@@ -43,7 +64,14 @@ const store = createStore({
                 .catch((error) =>{
                     console.log(error)
                 })
+        },
+        ADD_TO_FAVORITE({commit}, city) {
+            commit('SET_TO_FAVORITE', city)
+        },
+        DELETE_FROM_FAVORITE({commit}, index) {
+            commit('REMOVE_FROM_FAVORITE', index)
         }
+
 
     },
     getters: {
@@ -52,6 +80,9 @@ const store = createStore({
         },
         CITY_WEATHER(state) {
            return state.cityWeather
+        },
+        FAVORITE_CITIES(state) {
+            return state.favoriteCities
         }
     }
 })

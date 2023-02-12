@@ -9,6 +9,7 @@
     </div>
   </header>
   <div class="container">
+    <favorite-list v-if="FAVORITE_CITIES.length" :favorite-cities="FAVORITE_CITIES"></favorite-list>
     <div class="card-list">
       <city-card v-if="CITY_WEATHER" :item="CITY_WEATHER"></city-card>
     </div>
@@ -24,6 +25,7 @@ import cities from "../assets/ua.json"
 import CityCard from "@/components/CityCard";
 import CitySelect from "@/components/CitySelect";
 import Chart from "@/components/Chart";
+import FavoriteList from "@/components/FavoriteList";
 import {mapActions, mapGetters} from 'vuex'
 
 export default {
@@ -37,7 +39,8 @@ export default {
     Chart,
     CitySelect,
     Logo,
-    CityCard
+    CityCard,
+    FavoriteList
   },
   mounted() {
     this.GET_USER_LOCATION()
@@ -51,7 +54,8 @@ export default {
   computed: {
     ...mapGetters([
       'CITY_WEATHER',
-      'CITY'
+      'CITY',
+      'FAVORITE_CITIES'
     ])
   }
 }
@@ -60,6 +64,7 @@ export default {
 <style scoped lang="scss">
   .header {
     background: #242323;
+    margin-bottom: 20px;
     &__container {
       max-width: 1200px;
       margin: 0 auto;
