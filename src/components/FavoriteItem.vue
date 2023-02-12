@@ -1,5 +1,5 @@
 <template>
- <div class="favorite-item">
+ <div @click="selectFavoriteCity(item.city.name)" class="favorite-item" >
    <h5 class="favorite-item__title">{{ item.city.name }}</h5>
    <span @click="deleteItem" class="favorite-item__delete">x</span>
  </div>
@@ -17,6 +17,12 @@ export default {
   methods: {
     deleteItem() {
       this.$emit('deleteItem')
+    },
+    selectFavoriteCity(city) {
+      this.SET_CITY(city)
+      this.$router.push(`/${city}`)
+      this.GET_WEATHER(city)
+
     }
   }
 }

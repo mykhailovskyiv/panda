@@ -14,8 +14,8 @@
     <div class="card-list">
       <city-card v-if="CITY_WEATHER" :item="CITY_WEATHER"></city-card>
     </div>
-    <div class="chart" v-if="CITY_WEATHER">
-      <Chart :item="CITY_WEATHER"></Chart>
+    <div class="chart">
+      <Chart v-if="CITY_WEATHER" :item="CITY_WEATHER"></Chart>
     </div>
   </div>
 </template>
