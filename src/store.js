@@ -33,11 +33,12 @@ const store = createStore({
                     console.log(error)
                 })
         },
-        GET_USER_LOCATION({commit}) {
+        GET_USER_LOCATION({commit, dispatch}) {
             fetch('https://ipinfo.io/json?token=f671587f415d65')
                 .then(resp => resp.json())
                 .then((resp) => {
                     commit('UPDATE_CITY', resp.city)
+                    dispatch('GET_WEATHER',resp.city)
                 })
                 .catch((error) =>{
                     console.log(error)

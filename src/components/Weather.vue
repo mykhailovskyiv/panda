@@ -41,7 +41,6 @@ export default {
   },
   mounted() {
     this.GET_USER_LOCATION()
-    this.GET_WEATHER(this.$route.params.city)
   },
   methods: {
     ...mapActions([
@@ -54,16 +53,7 @@ export default {
       'CITY_WEATHER',
       'CITY'
     ])
-  },
-  watch:{
-    // CITY() {
-    //   if (this.CITY !== this.$route.params.city) {
-    //     this.$router.push(`/${this.CITY}`)
-    //     this.GET_WEATHER(this.CITY)
-    //   }
-    // }
   }
-
 }
 </script>
 
