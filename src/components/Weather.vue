@@ -10,6 +10,7 @@
   </header>
   <div class="container">
     <favorite-list v-if="FAVORITE_CITIES.length" :favorite-cities="FAVORITE_CITIES"></favorite-list>
+    <error v-if="ERROR" :error="ERROR"></error>
     <div class="card-list">
       <city-card v-if="CITY_WEATHER" :item="CITY_WEATHER"></city-card>
     </div>
@@ -26,6 +27,7 @@ import CityCard from "@/components/CityCard";
 import CitySelect from "@/components/CitySelect";
 import Chart from "@/components/Chart";
 import FavoriteList from "@/components/FavoriteList";
+import Error from "@/components/Error";
 import {mapActions, mapGetters} from 'vuex'
 
 export default {
@@ -40,7 +42,8 @@ export default {
     CitySelect,
     Logo,
     CityCard,
-    FavoriteList
+    FavoriteList,
+    Error
   },
   mounted() {
     this.GET_USER_LOCATION()
@@ -70,7 +73,8 @@ export default {
       'CITY_WEATHER',
       'CITY',
       'FAVORITE_CITIES',
-      'LOADER'
+      'LOADER',
+      'ERROR'
     ])
   },
 }

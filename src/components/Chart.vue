@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas style="width: 2000px" id="weather-chart"></canvas>
+    <canvas style="width:100%;max-width:1500px" id="weather-chart"></canvas>
   </div>
 </template>
 
@@ -34,23 +34,16 @@ export default {
       const labels = this.item.list.map(item => this.dateFormat(item.dt_txt))
       const values = this.item.list.map(item => this.temperatureOnCelsius(item.main.temp))
       this.Chart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
           labels: labels,
           datasets: [{
             label: 'Temp',
             data: values,
-            borderWidth: 1
+            pointRadius: 2,
+            borderColor: "rgba(71, 1, 142, 0.49)",
           }]
         },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-
       });
     },
     temperatureOnCelsius(value) {

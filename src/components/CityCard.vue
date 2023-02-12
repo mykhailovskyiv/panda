@@ -51,7 +51,7 @@ export default {
   border-radius: 35px;
   background-color: black;
   &__container {
-    background: white;
+    background: aliceblue;
     border-radius: 30px;
     padding-bottom: 10px;
   }
@@ -63,7 +63,7 @@ export default {
    padding-top: 5px;
   }
   &__button {
-    background: rgba(218, 183, 255, 0.34);
+    background-color: rgba(71, 1, 142, 0.49);
     border: none;
     padding: 5px 10px;
     border-radius: 10px;
@@ -73,7 +73,7 @@ export default {
     transition: .5s;
   }
   &__button:hover {
-    background-color: #3cfafa;
+    background-color: rgba(139, 48, 236, 0.34);
     transition: .5s;
   }
 }

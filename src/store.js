@@ -7,7 +7,8 @@ const store = createStore({
             cityWeather: null,
             filteredCities: [],
             favoriteCities: [],
-            loader: false
+            loader: false,
+            error: null
         }
     },
     mutations: {
@@ -20,13 +21,18 @@ const store = createStore({
         SET_TO_FAVORITE:(state, data) => {
             if (state.favoriteCities.length) {
                 let alreadyExist = false
+                let maxLength = false
                 state.favoriteCities.map(function (item){
                     if (item.city.name === data.city.name) {
                         alreadyExist = true
-
                     }
                 })
-                if (!alreadyExist) {
+                if (state.favoriteCities.length === 5) {
+                    maxLength = true
+                    state.error = 'You cannot add more than 5 cities'
+                    console.log(state.error)
+                }
+                if (!alreadyExist && !maxLength) {
                     state.favoriteCities.push(data)
                     localStorage.favorireCities = JSON.stringify(state.favoriteCities)
 
@@ -99,6 +105,9 @@ const store = createStore({
         },
         LOADER(state) {
             return state.loader
+        },
+        ERROR(state) {
+            return state.error
         },
     }
 })
