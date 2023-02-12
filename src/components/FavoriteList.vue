@@ -13,7 +13,7 @@
 
 <script>
 import FavoriteItem from "@/components/FavoriteItem";
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 export default {
   name: "FavoriteList",
   props: {
@@ -24,11 +24,15 @@ export default {
       }
     }
   },
+  components: {
+    FavoriteItem
+  },
   methods: {
     ...mapActions([
       'DELETE_FROM_FAVORITE',
       'SET_CITY',
       'GET_WEATHER',
+      'SET_LOADER'
     ]),
     deleteItem(index) {
       this.DELETE_FROM_FAVORITE(index)
@@ -37,10 +41,13 @@ export default {
       this.SET_CITY(city)
       this.$router.push(`/${city}`)
       this.GET_WEATHER(city)
+
     }
   },
-  components: {
-    FavoriteItem
+  computed: {
+    ...mapGetters([
+      'LOADER'
+    ])
   }
 }
 </script>

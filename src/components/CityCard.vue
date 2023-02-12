@@ -2,11 +2,11 @@
  <div class="card" v-if="item">
    <div class="card__container">
      <h5 class="card__title">{{ item.city.name }}</h5>
-     <p class="card__description">Temp: {{ temperatureOnCelsius(item.list[0].main.temp) }}</p>
+     <p class="card__description">Temp {{ temperatureOnCelsius(item.list[0].main.temp) }}</p>
      <p class="card__description">Feels like {{ temperatureOnCelsius(item.list[0].main.feels_like) }}</p>
      <p class="card__description">{{ getItemWeather().main }}</p>
      <p class="card__description">{{ getItemWeather().description }}</p>
-     <button @click="addToFavorite">Add to favorite</button>
+     <button @click="addToFavorite" class="card__button">Add to favorite</button>
    </div>
  </div>
 </template>
@@ -61,6 +61,20 @@ export default {
   }
   &__description {
    padding-top: 5px;
+  }
+  &__button {
+    background: rgba(218, 183, 255, 0.34);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .5s;
+  }
+  &__button:hover {
+    background-color: #3cfafa;
+    transition: .5s;
   }
 }
 

@@ -6,7 +6,8 @@ const store = createStore({
             city: '',
             cityWeather: null,
             filteredCities: [],
-            favoriteCities: []
+            favoriteCities: [],
+            loader: false
         }
     },
     mutations: {
@@ -39,7 +40,10 @@ const store = createStore({
         REMOVE_FROM_FAVORITE:(state, data) => {
             state.favoriteCities.splice(data, 1)
             localStorage.favorireCities = JSON.stringify(state.favoriteCities)
-        }
+        },
+        UPDATE_LOADER: (state, data) => {
+            state.loader = data
+        },
     },
     actions: {
         SET_CITY({commit}, data) {
@@ -52,7 +56,9 @@ const store = createStore({
             fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=a037c87fc70dc90f55aeda70b13e314c`)
                 .then(resp => resp.json())
                 .then((resp) => {
+                    commit('UPDATE_LOADER', true)
                     commit('UPDATE_CITY_WEATHER', resp)
+                    commit('UPDATE_LOADER', false)
                 })
                 .catch((error) =>{
                     console.log(error)
@@ -74,7 +80,10 @@ const store = createStore({
         },
         DELETE_FROM_FAVORITE({commit}, index) {
             commit('REMOVE_FROM_FAVORITE', index)
-        }
+        },
+        SET_LOADER({commit}, data) {
+            commit('UPDATE_LOADER', data)
+        },
 
 
     },
@@ -87,7 +96,10 @@ const store = createStore({
         },
         FAVORITE_CITIES(state) {
             return state.favoriteCities
-        }
+        },
+        LOADER(state) {
+            return state.loader
+        },
     }
 })
 

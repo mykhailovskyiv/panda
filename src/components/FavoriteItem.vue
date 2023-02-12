@@ -25,14 +25,15 @@ export default {
 <style scoped lang="scss">
 .favorite-item {
   background: rgba(218, 183, 255, 0.34);
-  padding: 5px 10px;
+  padding: 2px 10px;
   margin-right: 5px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   &__delete {
     color: white;
-    margin-left: 10px;
+    margin-left: 5px;
+    padding: 3px 5px;
     transition-duration: .5s;
     cursor: pointer;
   }

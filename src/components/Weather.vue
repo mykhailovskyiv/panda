@@ -69,7 +69,8 @@ export default {
     ...mapGetters([
       'CITY_WEATHER',
       'CITY',
-      'FAVORITE_CITIES'
+      'FAVORITE_CITIES',
+      'LOADER'
     ])
   },
 }
