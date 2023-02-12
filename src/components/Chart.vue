@@ -8,22 +8,32 @@
 import Chart from 'chart.js/auto'
 export default {
   name: "Chart",
+  data() {
+    return {
+      Chart: null
+    }
+  },
   props: {
     item :{
       type: Object,
       required: true
-    }
+    },
   },
   mounted() {
     this.getChart()
-    this.dateFormat()
+  },
+  watch: {
+    item() {
+      this.Chart.destroy()
+      this.getChart()
+    }
   },
   methods: {
     getChart() {
       const ctx = document.getElementById('weather-chart');
       const labels = this.item.list.map(item => this.dateFormat(item.dt_txt))
       const values = this.item.list.map(item => this.temperatureOnCelsius(item.main.temp))
-      new Chart(ctx, {
+      this.Chart = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: labels,
@@ -40,7 +50,9 @@ export default {
             }
           }
         }
+
       });
+      console.log(this.Chart)
     },
     temperatureOnCelsius(value) {
       return Math.ceil(value - 273.15)

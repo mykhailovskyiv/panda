@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <weather></weather>
+    <RouterView/>
   </div>
 </template>
 
 <script>
 
-import Weather from "@/components/Weather";
 export default {
   name: 'App',
-  components: {
-    Weather,
-  }
 }
 </script>
 

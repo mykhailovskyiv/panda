@@ -55,6 +55,7 @@ export default {
     setCity(city) {
       this.SET_CITY(city)
       this.searchCity = this.CITY
+      this.$router.push(`/${city}`)
       this.GET_WEATHER(city)
       this.filteredCity =[]
     },
