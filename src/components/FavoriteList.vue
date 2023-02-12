@@ -5,6 +5,7 @@
        :key="item.city"
        :item="item"
        @deleteItem="deleteItem(index)"
+       @click="selectFavoriteCity(item.city.name)"
    >
    </favorite-item>
  </div>
@@ -25,10 +26,17 @@ export default {
   },
   methods: {
     ...mapActions([
-        'DELETE_FROM_FAVORITE'
+      'DELETE_FROM_FAVORITE',
+      'SET_CITY',
+      'GET_WEATHER',
     ]),
     deleteItem(index) {
       this.DELETE_FROM_FAVORITE(index)
+    },
+    selectFavoriteCity(city) {
+      this.SET_CITY(city)
+      this.$router.push(`/${city}`)
+      this.GET_WEATHER(city)
     }
   },
   components: {

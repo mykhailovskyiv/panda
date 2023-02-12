@@ -32,7 +32,7 @@ export default {
   name: "Weather",
   data() {
     return {
-      cities: cities
+      cities: cities,
     }
   },
   components: {
@@ -44,12 +44,26 @@ export default {
   },
   mounted() {
     this.GET_USER_LOCATION()
+    this.setFavorites()
   },
   methods: {
     ...mapActions([
       'GET_USER_LOCATION',
       'GET_WEATHER',
+      'ADD_TO_FAVORITE'
     ]),
+    setFavorites() {
+      JSON.parse(localStorage.favorireCities).map(item => {
+        this.ADD_TO_FAVORITE(item)
+      })
+    }
+  },
+  watch: {
+    CITY() {
+      if (this.CITY !== this.$route.params.city) {
+        this.$router.push(`/${this.CITY}`)
+      }
+    }
   },
   computed: {
     ...mapGetters([
@@ -57,7 +71,7 @@ export default {
       'CITY',
       'FAVORITE_CITIES'
     ])
-  }
+  },
 }
 </script>
 

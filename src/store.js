@@ -27,14 +27,18 @@ const store = createStore({
                 })
                 if (!alreadyExist) {
                     state.favoriteCities.push(data)
+                    localStorage.favorireCities = JSON.stringify(state.favoriteCities)
+
                 }
             } else {
                 state.favoriteCities.push(data)
+                localStorage.favorireCities = JSON.stringify(state.favoriteCities)
             }
 
         },
         REMOVE_FROM_FAVORITE:(state, data) => {
             state.favoriteCities.splice(data, 1)
+            localStorage.favorireCities = JSON.stringify(state.favoriteCities)
         }
     },
     actions: {
