@@ -1,7 +1,7 @@
 <template>
  <div class="favorite-item">
    <h5 class="favorite-item__title">{{ item.city.name }}</h5>
-   <span @click="deleteItem" class="favorite-item__delete">&times;</span>
+   <span @click="deleteItem" class="favorite-item__delete">x</span>
  </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
   border-radius: 10px;
   margin-top: 5px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   transition: .5s;
   &__delete {
     color: white;

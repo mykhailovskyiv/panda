@@ -3,6 +3,7 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <span>are you sure?</span>
+      <div @click="acceptDelete">Yes</div>
     </div>
     <div class="close"></div>
   </div>
@@ -15,6 +16,11 @@ export default {
   props: {
     modal: {
       type: Boolean
+    }
+  },
+  methods: {
+    acceptDelete() {
+      this.$emit('acceptDelete')
     }
   }
 }

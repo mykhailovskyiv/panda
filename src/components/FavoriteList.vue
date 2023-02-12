@@ -14,6 +14,7 @@
 <script>
 import FavoriteItem from "@/components/FavoriteItem";
 import {mapActions, mapGetters} from "vuex";
+
 export default {
   name: "FavoriteList",
   props: {
