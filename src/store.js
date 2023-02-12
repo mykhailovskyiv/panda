@@ -27,7 +27,6 @@ const store = createStore({
             fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=a037c87fc70dc90f55aeda70b13e314c`)
                 .then(resp => resp.json())
                 .then((resp) => {
-                    console.log(resp)
                     commit('UPDATE_CITY_WEATHER', resp)
                 })
                 .catch((error) =>{

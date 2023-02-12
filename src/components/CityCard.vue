@@ -2,10 +2,10 @@
  <div class="card" v-if="item">
    <div class="card__container">
      <h5 class="card__title">{{ item.city.name }}</h5>
-<!--     <p class="card__description">Temp: {{ temperatureOnCelsius(item.main.temp) }}</p>-->
-<!--     <p class="card__description">Feels like {{ temperatureOnCelsius(item.main.feels_like) }}</p>-->
-<!--     <p class="card__description">{{ getItemWeather().main }}</p>-->
-<!--     <p class="card__description">{{ getItemWeather().description }}</p>-->
+     <p class="card__description">Temp: {{ temperatureOnCelsius(item.list[0].main.temp) }}</p>
+     <p class="card__description">Feels like {{ temperatureOnCelsius(item.list[0].main.feels_like) }}</p>
+     <p class="card__description">{{ getItemWeather().main }}</p>
+     <p class="card__description">{{ getItemWeather().description }}</p>
    </div>
  </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     getItemWeather() {
-      return this.item.weather[0]
+      return this.item.list[0].weather[0]
     },
     temperatureOnCelsius(value) {
       return Math.ceil(value - 273.15)
