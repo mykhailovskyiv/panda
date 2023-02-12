@@ -41,7 +41,8 @@ export default {
     ...mapActions([
       'SET_CITY',
       'SET_CITY_WEATHER',
-      'GET_WEATHER'
+      'GET_WEATHER',
+      'GET_USER_LOCATION'
     ]),
     findCity() {
       if (this.searchCity.length !==0) {

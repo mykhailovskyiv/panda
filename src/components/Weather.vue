@@ -24,7 +24,7 @@ import cities from "../assets/ua.json"
 import CityCard from "@/components/CityCard";
 import CitySelect from "@/components/CitySelect";
 import Chart from "@/components/Chart";
-import {mapGetters} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
   name: "Weather",
@@ -39,12 +39,29 @@ export default {
     Logo,
     CityCard
   },
+  mounted() {
+    this.GET_USER_LOCATION()
+    this.GET_WEATHER(this.$route.params.city)
+  },
   methods: {
+    ...mapActions([
+      'GET_USER_LOCATION',
+      'GET_WEATHER',
+    ]),
   },
   computed: {
     ...mapGetters([
-      'CITY_WEATHER'
+      'CITY_WEATHER',
+      'CITY'
     ])
+  },
+  watch:{
+    // CITY() {
+    //   if (this.CITY !== this.$route.params.city) {
+    //     this.$router.push(`/${this.CITY}`)
+    //     this.GET_WEATHER(this.CITY)
+    //   }
+    // }
   }
 
 }
