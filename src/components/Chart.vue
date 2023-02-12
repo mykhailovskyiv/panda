@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas style="width:100%;max-width:1500px" id="weather-chart"></canvas>
+    <canvas class="chart" id="weather-chart"></canvas>
   </div>
 </template>
 
@@ -58,3 +58,10 @@ export default {
 }
 
 </script>
+
+<style lang="scss" scoped>
+ .chart {
+   width: 1500px;
+   height: 700px;
+ }
+</style>

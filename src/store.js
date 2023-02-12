@@ -25,12 +25,18 @@ const store = createStore({
                 state.favoriteCities.map(function (item){
                     if (item.city.name === data.city.name) {
                         alreadyExist = true
+                        state.error = 'This city has already been added'
+                        setTimeout(function (){
+                            state.error = null
+                        },5000)
                     }
                 })
                 if (state.favoriteCities.length === 5) {
                     maxLength = true
                     state.error = 'You cannot add more than 5 cities'
-                    console.log(state.error)
+                    setTimeout(function (){
+                        state.error = null
+                    },5000)
                 }
                 if (!alreadyExist && !maxLength) {
                     state.favoriteCities.push(data)
@@ -49,6 +55,9 @@ const store = createStore({
         },
         UPDATE_LOADER: (state, data) => {
             state.loader = data
+        },
+        UPDATE_ERROR: (state, data) => {
+            state.error = data
         },
     },
     actions: {
@@ -89,6 +98,9 @@ const store = createStore({
         },
         SET_LOADER({commit}, data) {
             commit('UPDATE_LOADER', data)
+        },
+        SET_ERROR({commit}, data) {
+            commit('UPDATE_ERROR', data)
         },
 
 

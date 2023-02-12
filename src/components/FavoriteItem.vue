@@ -28,6 +28,7 @@ export default {
   padding: 5px 10px;
   margin-right: 5px;
   border-radius: 10px;
+  margin-top: 5px;
   display: flex;
   align-items: flex-end;
   transition: .5s;

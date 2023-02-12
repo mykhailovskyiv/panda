@@ -1,16 +1,26 @@
 <template>
   <div class="error">
+    <div @click="setError" class="error__button">x</div>
     <h4>{{ error }}</h4>
-    <span class="error__button">ok</span>
   </div>
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
   name: "Error",
   props: {
     error: {
       type: String
+    }
+  },
+  methods: {
+    ...mapActions([
+        'SET_ERROR'
+    ]),
+    setError() {
+      this.SET_ERROR(null)
     }
   }
 }
@@ -20,21 +30,27 @@ export default {
  .error {
    width: fit-content;
    margin: 0 auto;
-   padding: 5px 15px;
+   padding: 25px 15px 10px 15px;
    margin-top: 20px;
-   background-color: #fd4040;
+   background-color: #ffca1d;
    border-radius: 10px;
+   position: relative;
    &__button {
-
      border: none;
      border-radius: 10px;
      padding: 2px 15px;
      cursor: pointer;
-     color: white;
      margin-top: 5px;
-     transition-duration: .5s;   }
+     transition-duration: .5s;
+     margin-left: auto;
+     position: absolute;
+     right: 0;
+     top: 0;
+     z-index: 999;
+     color: white;
+   }
    &__button:hover {
-     color: #62ff62;
+     color: red;
      transition-duration: .5s;
    }
  }
