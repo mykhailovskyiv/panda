@@ -1,6 +1,6 @@
 <template>
   <div class="error">
-    <div @click="setError" class="error__button">x</div>
+    <div @click="setError" class="error__button">&times;</div>
     <h4>{{ error }}</h4>
   </div>
 </template>
