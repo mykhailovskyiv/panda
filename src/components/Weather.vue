@@ -14,6 +14,9 @@
     <city-card v-if="CITY_WEATHER" :item="CITY_WEATHER"></city-card>
     <Chart v-if="CITY_WEATHER" :item="CITY_WEATHER"></Chart>
   </div>
+  <footer class="footer">
+      <span>© {{ this.year }} Valerii Mykhailovskyi | All rights reserved</span>
+  </footer>
 </template>
 
 <script>
@@ -31,6 +34,7 @@ export default {
   data() {
     return {
       cities: cities,
+      year: new Date().getFullYear()
     }
   },
   components: {
@@ -119,6 +123,13 @@ export default {
     }
     .container {
       max-width: 90%;
+    }
+  }
+  .footer {
+    margin: 20px 0;
+    span {
+      font-size: 13px;
+      color: #686868;
     }
   }
 </style>
