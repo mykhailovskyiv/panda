@@ -89,5 +89,10 @@ export default {
   cursor: pointer;
   transition-duration: .5s;
 }
+@media(max-width: 768px) {
+  .close {
+    top: 0;
+  }
+}
 
 </style>
