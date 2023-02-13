@@ -2,8 +2,8 @@
   <header class="header">
     <div class="header__container">
       <div class="header__content">
-        <Logo class="logo"></Logo>
-        <h1>Panda Weather</h1>
+        <Logo class="header__logo"></Logo>
+        <h1 class="header__text">Panda Weather</h1>
       </div>
       <city-select :cities="cities"></city-select>
     </div>
@@ -11,12 +11,8 @@
   <div class="container">
     <favorite-list v-if="FAVORITE_CITIES.length" :favorite-cities="FAVORITE_CITIES"></favorite-list>
     <error v-if="ERROR" :error="ERROR"></error>
-    <div class="card-list">
-      <city-card v-if="CITY_WEATHER" :item="CITY_WEATHER"></city-card>
-    </div>
-    <div class="chart">
-      <Chart v-if="CITY_WEATHER" :item="CITY_WEATHER"></Chart>
-    </div>
+    <city-card v-if="CITY_WEATHER" :item="CITY_WEATHER"></city-card>
+    <Chart v-if="CITY_WEATHER" :item="CITY_WEATHER"></Chart>
   </div>
 </template>
 
@@ -96,17 +92,33 @@ export default {
     &__content {
       display: flex;
       align-items: center;
-      h1 {
-        color: white;
-      }
-      .logo {
-        margin-right: 10px;
-      }
+    }
+    &__logo {
+      margin-right: 10px;
+    }
+    &__text {
+      color: white;
     }
 
   }
   .container {
     max-width: 1200px;
     margin: 0 auto;
+  }
+  @media(max-width: 1200px) {
+    .header {
+      &__container {
+        max-width: 90%;
+      }
+      &__logo {
+        margin-right: 5px;
+      }
+      &__text {
+        font-size: 24px;
+      }
+    }
+    .container {
+      max-width: 90%;
+    }
   }
 </style>

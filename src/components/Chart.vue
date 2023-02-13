@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <canvas id="weather-chart"></canvas>
+  <div class="chart">
+    <div class="chart__container">
+      <canvas class="canvas" id="weather-chart"></canvas>
+    </div>
   </div>
 </template>
 
@@ -44,6 +46,9 @@ export default {
             borderColor: "rgba(71, 1, 142, 0.49)",
           }]
         },
+        options: {
+          responsive: false
+        }
       });
     },
     temperatureOnCelsius(value) {
@@ -58,3 +63,35 @@ export default {
 }
 
 </script>
+
+<style lang="scss" scoped>
+  .chart {
+    overflow-x: scroll;
+    &__container {
+      width: 1600px;
+    }
+    canvas {
+      width: 1600px;
+    }
+  }
+  @media(max-width: 1200px) {
+    .chart {
+      &__container {
+        width: 1200px;
+      }
+      canvas {
+        width: 1200px;
+      }
+    }
+  }
+  @media(max-width: 768px) {
+    .chart {
+      &__container {
+        width: 800px;
+      }
+      canvas {
+        width: 800px;
+      }
+    }
+  }
+</style>
