@@ -37,12 +37,6 @@ export default {
     deleteItem(index) {
       this.DELETE_FROM_FAVORITE(index)
     },
-    // selectFavoriteCity(city) {
-    //   this.SET_CITY(city)
-    //   this.$router.push(`/${city}`)
-    //   this.GET_WEATHER(city)
-    //
-    // }
   },
   computed: {
     ...mapGetters([

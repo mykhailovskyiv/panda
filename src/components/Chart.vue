@@ -44,6 +44,8 @@ export default {
             data: values,
             pointRadius: 2,
             borderColor: "rgba(71, 1, 142, 0.49)",
+            backgroundColor: "rgba(71, 1, 142, 0.49)",
+            fill: 'origin'
           }]
         },
         options: {
@@ -52,7 +54,6 @@ export default {
               display: false
             }
           },
-          responsive: false
         }
       });
     },
