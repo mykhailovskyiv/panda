@@ -47,6 +47,11 @@ export default {
           }]
         },
         options: {
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
           responsive: false
         }
       });
