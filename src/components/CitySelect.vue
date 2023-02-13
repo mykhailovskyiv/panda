@@ -87,11 +87,11 @@ export default {
     padding: 0;
     width: 100%;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 10px;
   }
   &__item {
     padding-top: 5px;
-    border-radius: 15px;
+    border-radius: 10px;
     transition-duration: .5s;
   }
   &__item:hover {
@@ -100,7 +100,7 @@ export default {
   }
   &__input {
     padding: 5px 5px 5px 10px;
-    border-radius: 15px;
+    border-radius: 10px;
     border: none;
   }
 }

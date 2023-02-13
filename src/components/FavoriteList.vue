@@ -1,13 +1,17 @@
 <template>
-  <div class="favorite_list">
-   <favorite-item
-       v-for="(item, index) in favoriteCities"
-       :key="item.city"
-       :item="item"
-       @deleteItem="deleteItem(index)"
-   >
-   </favorite-item>
- </div>
+  <div>
+    <h4>List of Favorites</h4>
+    <div class="favorite_list">
+      <favorite-item
+          v-for="(item, index) in favoriteCities"
+          :key="item.city"
+          :item="item"
+          @deleteItem="deleteItem(index)"
+      >
+      </favorite-item>
+    </div>
+  </div>
+
 </template>
 
 <script>

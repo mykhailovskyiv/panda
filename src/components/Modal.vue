@@ -53,6 +53,7 @@ export default {
     border: 1px solid #888;
     width: 80%;
     position: relative;
+    border-radius: 20px;
   }
   &__buttons {
     display: flex;
