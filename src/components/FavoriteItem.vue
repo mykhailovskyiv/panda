@@ -58,10 +58,10 @@ export default {
   display: flex;
   align-items: center;
   margin-right: 5px;
-  margin-top: 5px;
+  margin-top: 10px;
   &__container {
     background: rgba(71, 1, 142, 0.49);
-    padding: 5px 10px;
+    padding: 7px 15px;
     margin-right: 5px;
     border-radius: 10px;
     transition: .5s;

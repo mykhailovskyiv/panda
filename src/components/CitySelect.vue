@@ -99,7 +99,7 @@ export default {
     transition-duration: .5s;
   }
   &__input {
-    padding: 5px 5px 5px 10px;
+    padding: 7px 10px 7px 15px;
     border-radius: 10px;
     border: none;
   }

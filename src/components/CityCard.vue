@@ -70,7 +70,7 @@ export default {
   &__button {
     background-color: rgba(71, 1, 142, 0.49);
     border: none;
-    padding: 5px 10px;
+    padding: 7px 15px;
     border-radius: 10px;
     font-weight: bold;
     margin-top: 10px;
