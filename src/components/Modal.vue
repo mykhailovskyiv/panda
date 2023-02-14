@@ -49,7 +49,7 @@ export default {
     flex-direction: column;
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    padding: 30px 20px;
     border: 1px solid #888;
     width: 80%;
     position: relative;
